@@ -1,0 +1,57 @@
+<main>
+    <div class="position-relative ">
+        <section class="section section-lg section-hero section-shaped">
+            <div class="container">
+                <div class="row-cols-lg-6 ">
+                    <div class="col-form-label-lg">
+                        <div ngbDropdown class="pl-lg-4 px-5 ">
+                            <button class="btn btn-outline-primary  text-left " id="dropdownBasic1" style="width: 25%"
+                                    ngbDropdownToggle>KAYITLI FİRMA
+                                SEÇİNİZ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-cols-lg-6 mb-3">
+                    <div class="col-form-label-lg">
+                        <div ngbDropdown class="pl-lg-4 px-5">
+                            <button class="btn btn-outline-primary  text-left " id="dropdownBasic2" style="width: 25%"
+                                    ngbDropdownToggle>HESAP DÖNEMİ
+                                SEÇİNİZ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <input class="col-lg-3 mb-3" #fileUpload id="fileInput" name="file" type="file" accept="text/xml"
+                           multiple (change)="onFileChange($event)">
+                </div>
+                <div class="col-mb-4">
+                    <table class="table table-hover table-striped mb-3">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Dosya adı</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let file of myFiles ; index as i  ">
+                            <td scope="row">{{ i + 1 }}</td>
+                            <td><a>{{ file.name }}</a></td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" (click)="onFileDelete(i)">SİL</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <div>
+                        <button class="btn btn-primary">ANALİZİ BAŞLAT</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

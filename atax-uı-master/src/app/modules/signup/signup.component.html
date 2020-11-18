@@ -1,0 +1,131 @@
+<main>
+    <section class="section section-shaped section-lg">
+        <div class="container pt-lg-md">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card  shadow border-0">
+                        <div class="card-body px-lg-5 py-lg-5">
+                            <div class="text-center text-muted mb-4">
+                                <small>Üye olmak için bilgilerinizi giriniz.</small>
+                            </div>
+                            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group" [ngClass]="{'focused':focus===true}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                        </div>
+                                        <input class="form-control" class="form-control" formControlName="name"
+                                               placeholder="Adınız" type="text"
+                                               [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                                               (focus)="focus=true" (blur)="focus=false">
+                                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                            <div *ngIf="f.name.errors.required">Adınızı giriniz.</div>
+                                            <div *ngIf="f.name.errors.pattern">Adınız harf içermelidir.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" [ngClass]="{'focused':focus===true}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                        </div>
+                                        <input class="form-control" class="form-control" formControlName="surName"
+                                               placeholder="Soyadınız" type="text"
+                                               [ngClass]="{ 'is-invalid': submitted && f.surName.errors }"
+                                               (focus)="focus=true" (blur)="focus=false">
+                                        <div *ngIf="submitted && f.surName.errors" class="invalid-feedback">
+                                            <div *ngIf="f.surName.errors.required">Soyadınızı giriniz.</div>
+                                            <div *ngIf="f.surName.errors.pattern">Soyadınız harf içermelidir.</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" [ngClass]="{'focused':focus===true}">
+                                        <div class="input-group input-group-alternative mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                            </div>
+                                            <input class="form-control" class="form-control" formControlName="title"
+                                                   placeholder="Unvan" type="text"
+                                                   [ngClass]="{ 'is-invalid': submitted && f.title.errors }"
+                                                   (focus)="focus=true" (blur)="focus=false">
+                                            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                                <div *ngIf="f.title.errors.required">Unvanınızı giriniz.</div>
+                                                <div *ngIf="f.title.errors.pattern">Unvanınız harf içermelidir.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                        </div>
+                                        <input class="form-control" class="form-control" formControlName="email"
+                                               placeholder="E-posta" type="email"
+                                               [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                                               (focus)="focus1=true" (blur)="focus1=false">
+                                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                            <div *ngIf="f.email.errors.required">Emailinizi giriniz.</div>
+                                            <div *ngIf="f.email.errors.email">Geçerli bir email adresi giriniz.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" [ngClass]="{'focused':focus2===true}">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        </div>
+                                        <input class="form-control" formControlName="password" class="form-control"
+                                               placeholder="Şifre" type="password"
+                                               [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                               (focus)="focus2=true" (blur)="focus2=false">
+                                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                            <div *ngIf="f.password.errors.required">Şifrenizi giriniz.</div>
+                                            <div *ngIf="f.password.errors.minlength">Şifreniz en az 6 karakter
+                                                içermelidir.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" [ngClass]="{'focused':focus2===true}">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Şifre tekrar "
+                                               formControlName="confirmPassword" class="form-control"
+                                               [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
+                                               type="password" (focus)="focus2=true" (blur)="focus2=false">
+                                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                            <div *ngIf="f.confirmPassword.errors.required">Şifrenizi tekrar giriniz.
+                                            </div>
+                                            <div *ngIf="f.confirmPassword.errors.mustMatch">Şifreniz eşleşmelidir.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" [ngClass]="{'focused':focus2===true}">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                                        </div>
+                                        <input class="form-control" formControlName="phone" placeholder="Telefon "
+                                               type="text" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+                                               (focus)="focus2=true" (blur)="focus2=false">
+                                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                            <div *ngIf="f.phone.errors.required">Telefon numaranızı giriniz.</div>
+                                            <div *ngIf="f.phone.errors.pattern">Telefon numaranız rakam içermelidir.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center px-5 ">
+                                    <button type="submit" class="btn btn-primary mt-4" style="width: 80%">ÜYE OL
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
